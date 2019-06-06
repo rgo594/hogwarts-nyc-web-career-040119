@@ -3,29 +3,36 @@ import React from 'react';
 
 class HogsContainer extends React.Component{
   state = {
-    hogDesc:
+    hogDesc: []
   }
 
 
 
-  clickHandler = (e) => {
-    this.props.hogs.map(hog => {
-       if (hog.name === e.target.id){
-         this.state.hogDesc.push()
-       }
-    })
-  }
+  // clickHandler = (e) => {
+  //
+  // }
 
   createHogLis = () => {
     // let img = hog.name.split(" ").map(x => x.toLowerCase()).join("_")
     return this.props.hogs.map(hog => {
       let img = hog.name.split(" ").map(x => x.toLowerCase()).join("_")
-      return <li id={hog.name} onClick={this.clickHandler} className="pigTile">{hog.name} <img src={require(`../hog-imgs/${img}.jpg`)}/></li>
+      if (hog.selected) {
+        return <li id={hog.name} onClick={this.props.hogHandler} className="pigTile">
+          <img src={require(`../hog-imgs/${img}.jpg`)}/>
+          <p>{hog.name}</p>
+          <p>{hog.specialty}</p>
+        </li>
+      }else{
+        return <li id={hog.name} onClick={this.props.hogHandler} className="pigTile">
+          <img src={require(`../hog-imgs/${img}.jpg`)}/>
+          {hog.name}
+        </li>
+      }
     })
   }
 
   render(){
-    console.log(this.props.hogs)
+    // console.log(this.props.hogs)
     return(
       <div>
         <ul>
