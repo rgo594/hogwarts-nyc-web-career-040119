@@ -1,5 +1,5 @@
 const hogs = [
-  {
+  { 
     name: 'Mudblood',
     specialty: 'Mediocre magic',
     greased: false,
